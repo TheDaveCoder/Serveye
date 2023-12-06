@@ -1,0 +1,25 @@
+.FWFlowpane {
+    -fx-max-width: 800;
+}
+
+.dateContainer {
+    -fx-alignment: center;
+    -fx-max-height: 200;
+    -fx-spacing: 15;
+}
+
+.dateContainer .label {
+    -fx-text-fill: white;
+}
+
+.dateContainerData {
+    -fx-font-size: 40;
+    -fx-spacing: 15;
+    -fx-font-family: "Montserrat Semibold";
+    -fx-padding: 10;
+}
+
+.dateContainerLabel {
+    -fx-font-size: 25;
+    -fx-font-family: "Montserrat Medium";
+}

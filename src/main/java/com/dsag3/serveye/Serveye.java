@@ -56,7 +56,7 @@ public class Serveye extends Application {
 
         // Initialize controllers and initial data
         dbCont.init(app, dashboard, responses, suggestions, rpCont, sgCont, scheduler, genInf);
-        rpCont.init(app, dashboard, responses, suggestions, dbCont, sgCont, scheduler);
+        rpCont.init(app, dashboard, responses, suggestions, dbCont, sgCont, scheduler, initialData);
         sgCont.init(app, dashboard, responses, suggestions, dbCont, rpCont, scheduler);
 
         // invoke controllers
