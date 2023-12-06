@@ -1,0 +1,23 @@
+.v_region {
+    -fx-cursor: "V_RESIZE";
+}
+
+#top-left {
+    -fx-cursor: "NW_RESIZE";
+}
+
+#top_right {
+    -fx-cursor: "NE_RESIZE";
+}
+
+.h_region {
+    -fx-cursor: "H_RESIZE";
+}
+
+#bottom-left {
+    -fx-cursor: "SW_RESIZE";
+}
+
+#bottom-right {
+    -fx-cursor: "SE_RESIZE";
+}

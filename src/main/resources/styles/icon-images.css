@@ -1,0 +1,18 @@
+.btn-img {
+    -fx-background-color: transparent;
+}
+
+.btn-img:hover {
+    -fx-background-color: #323232;
+    -fx-cursor: hand;
+}
+
+#minimize {
+    -fx-background-image: url('../icons/minimize.png');
+}
+#maximize {
+    -fx-background-image: url('../icons/maximize.png');
+}
+#exit {
+    -fx-background-image: url('../icons/exit.png');
+}

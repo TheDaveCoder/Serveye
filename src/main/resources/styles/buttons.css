@@ -1,0 +1,68 @@
+.menu-btn {
+    -fx-pref-width: 75;
+    -fx-pref-height: 70;
+    -fx-background-radius: 0;
+    -fx-background-color: none;
+    -fx-text-fill: #e6e6e6;
+    -fx-font-family: 'montserrat';
+    -fx-font-size: 8;
+    -fx-alignment: bottom-center;
+    -fx-background-size: 50%;
+    -fx-background-position: bottom 25 center;
+    -fx-background-repeat: no-repeat;
+    -fx-cursor: hand;
+    -fx-padding: 10;
+}
+
+.menu-btn:hover {
+    -fx-background-color: #292929;
+    -fx-text-fill: #008080;
+}
+
+.menu-btn.selected {
+    -fx-border-width: 0 0 0 3;
+    -fx-border-color: #008080;
+    -fx-text-fill: #008080;
+}
+
+#help-btn {
+    -fx-font-size: 10;
+    -fx-background-image: url('../icons/help.png');
+    -fx-pref-height: 55;
+    -fx-background-size: 30%;
+    -fx-label-padding: 0 0 5 0;
+    -fx-padding: 0;
+}
+#help-btn:hover {
+    -fx-background-image: url('../icons/help-selected.png');
+}
+
+#dashboard {
+    -fx-background-image: url('../icons/dashboard.png');
+}
+#dashboard:hover {
+    -fx-background-image: url('../icons/dashboard-selected.png');
+}
+#dashboard.selected {
+    -fx-background-image: url('../icons/dashboard-selected.png');
+}
+
+#responses {
+    -fx-background-image: url('../icons/responses.png');
+}
+#responses:hover {
+    -fx-background-image: url('../icons/responses-selected.png');
+}
+#responses.selected {
+    -fx-background-image: url('../icons/responses-selected.png');
+}
+
+#suggestions {
+    -fx-background-image: url('../icons/suggestions.png');
+}
+#suggestions:hover {
+    -fx-background-image: url('../icons/suggestions-selected.png');
+}
+#suggestions.selected {
+    -fx-background-image: url('../icons/suggestions-selected.png');
+}
