@@ -1,0 +1,20 @@
+.feedback-card {
+    -fx-max-height: 50;
+    -fx-margin: 15 0 15 0;
+}
+
+.feedback-card:hover {
+    -fx-background-color: #323232;
+}
+
+.feedback-card-label {
+    -fx-text-fill: #e6e6e6;
+    -fx-font-family: "Montserrat Semibold";
+    -fx-padding: 0 0 0 15;
+}
+
+.feedback-card-sublabel {
+    -fx-text-fill: #e6e6e6;
+    -fx-font-family: "Montserrat Semibold";
+    -fx-padding: 0 15 0 15;
+}

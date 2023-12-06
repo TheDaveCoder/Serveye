@@ -1,0 +1,15 @@
+.header-label {
+    -fx-font-family: "Montserrat Semibold";
+    -fx-font-size: 17.5;
+    -fx-text-fill: #e6e6e6;
+}
+
+.response-header {
+    -fx-min-height: 50;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #181818;
+}
+
+#response-content {
+    -fx-border-color: #2D2D2D;
+}
