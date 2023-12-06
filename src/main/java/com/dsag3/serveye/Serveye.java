@@ -3,12 +3,20 @@ package com.dsag3.serveye;
 import com.dsag3.serveye.Controllers.dbController;
 import com.dsag3.serveye.Controllers.rpController;
 import com.dsag3.serveye.Controllers.sgController;
+import com.dsag3.serveye.Models.ResponseModel;
+import com.dsag3.serveye.Utility.DataHandler;
+import com.dsag3.serveye.Models.GeneralInfo;
+import com.dsag3.serveye.Utility.DataUpdater;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.LinkedList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class Serveye extends Application {
 
@@ -39,10 +47,17 @@ public class Serveye extends Application {
         rpController rpCont = rootMenus[1].getController();
         sgController sgCont = rootMenus[2].getController();
 
-        // Initialize controllers
-        dbCont.init(app, dashboard, responses, suggestions, rpCont, sgCont);
-        rpCont.init(app, dashboard, responses, suggestions, dbCont, sgCont);
-        sgCont.init(app, dashboard, responses, suggestions, dbCont, rpCont);
+        // Get Initial Survey Responses
+        LinkedList<ResponseModel> initialData = DataHandler.fetchDataFromDatabase();
+        // Setup General Info Object
+        GeneralInfo genInf = new GeneralInfo(initialData);
+        // Setup Scheduler
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        // Initialize controllers and initial data
+        dbCont.init(app, dashboard, responses, suggestions, rpCont, sgCont, scheduler, genInf);
+        rpCont.init(app, dashboard, responses, suggestions, dbCont, sgCont, scheduler);
+        sgCont.init(app, dashboard, responses, suggestions, dbCont, rpCont, scheduler);
 
         // invoke controllers
         dbCont.handleControls();
@@ -51,10 +66,15 @@ public class Serveye extends Application {
 
         // Set Stage Properties
         app.initStyle(StageStyle.TRANSPARENT);
+        app.getIcons().add(new Image("file:/D:/Libraries/Programming/JavaApp/Serveye/src/main/resources/icons/serveye.png"));
         app.setMinWidth(700);
         app.setMinHeight(510);
         app.setTitle("Serveye");
         app.setScene(dashboard); // sets the dashboard as the primary scene
         app.show();
+
+        // Start updater every X seconds
+        DataUpdater dataUpdater = new DataUpdater(genInf, dbCont, rpCont, sgCont, scheduler);
+        dataUpdater.startUpdating();
     }
 }

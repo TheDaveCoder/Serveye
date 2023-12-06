@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ScheduledExecutorService;
+
 public class TitlebarSubController {
     private final Stage app;
     private final dbController dbCont;
@@ -18,6 +20,7 @@ public class TitlebarSubController {
     private final Button minimize;
     private final Button maximize;
     private final Button exit;
+    ScheduledExecutorService scheduler;
     public boolean isDraggable = true;
     private double mouseX, mouseY;
     public TitlebarSubController(Stage app,
@@ -27,7 +30,8 @@ public class TitlebarSubController {
                                  Button exit,
                                  dbController dbCont,
                                  rpController rpCont,
-                                 sgController sgCont) {
+                                 sgController sgCont,
+                                 ScheduledExecutorService scheduler) {
         this.app = app;
         this.dbCont = dbCont;
         this.rpCont = rpCont;
@@ -36,6 +40,7 @@ public class TitlebarSubController {
         this.minimize = minimize;
         this.maximize = maximize;
         this.exit = exit;
+        this.scheduler = scheduler;
     }
 
     public void init() {
@@ -54,7 +59,10 @@ public class TitlebarSubController {
             rpCont.isDraggable = isDraggable;
             sgCont.isDraggable = isDraggable;
         });
-        exit.setOnAction(event -> app.close());
+        exit.setOnAction(event -> {
+            scheduler.close();
+            app.close();
+        });
         // Custom title bar drag
         titleBar.setOnMouseDragged(event -> {
             isDraggable = dbCont.isDraggable;

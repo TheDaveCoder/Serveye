@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ScheduledExecutorService;
+
 public class sgController {
     // FXML Injections
     @FXML
@@ -52,10 +54,11 @@ public class sgController {
                      Scene responses,
                      Scene suggestions,
                      dbController dbCont,
-                     rpController rpCont) {
+                     rpController rpCont,
+                     ScheduledExecutorService scheduler) {
         this.app = app;
         // Initialize Title Bar
-        titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, rpCont, this);
+        titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, rpCont, this, scheduler);
         // Initialize Side Menu
         sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg);
         // Initialize Custom Resize

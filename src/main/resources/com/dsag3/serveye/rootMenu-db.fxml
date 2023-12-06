@@ -2,12 +2,23 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -43,9 +54,6 @@
                </right>
             </BorderPane>
          </top>
-         <center>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" styleClass="content-pane" BorderPane.alignment="CENTER" />
-         </center>
          <left>
             <BorderPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="75.0" stylesheets="@../../../styles/buttons.css" BorderPane.alignment="CENTER">
                <top>
@@ -73,6 +81,252 @@
                </bottom>
             </BorderPane>
          </left>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="content-pane" BorderPane.alignment="CENTER">
+               <top>
+                  <BorderPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" BorderPane.alignment="CENTER">
+                     <left>
+                        <Label text="Dashboard" textFill="#e6e6e6" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="20.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets left="25.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </left>
+                  </BorderPane>
+               </top>
+               <center>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="1000.0" style="-fx-background-color: #323232;" BorderPane.alignment="CENTER">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #323232;">
+                           <top>
+                              <GridPane minHeight="170.0" stylesheets="@../../../styles/main-info.css" BorderPane.alignment="CENTER_LEFT">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <BorderPane.margin>
+                                    <Insets bottom="25.0" />
+                                 </BorderPane.margin>
+                                 <children>
+                                    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWidth="200.0" style="-fx-border-width: 0 2 0 0; -fx-border-color: #161616;" styleClass="card">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="170.0" prefWidth="100.0" styleClass="card-inner">
+                                             <children>
+                                                <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../icons/equals-solid.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="overallResponsesLabel" text="0" textFill="#e6e6e6">
+                                                   <font>
+                                                      <Font name="Montserrat SemiBold" size="30.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Responses" textFill="#dadada">
+                                                   <font>
+                                                      <Font name="Montserrat Medium" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="170.0" prefWidth="100.0" styleClass="card-inner">
+                                             <children>
+                                                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../icons/percent-solid.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                                <Label fx:id="overallRatingLabel" text="0%" textFill="#e6e6e6">
+                                                   <font>
+                                                      <Font name="Montserrat SemiBold" size="30.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Overall Rating" textFill="#dadada">
+                                                   <font>
+                                                      <Font name="Montserrat Medium" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </GridPane>
+                           </top>
+                           <center>
+                              <FlowPane alignment="TOP_CENTER" hgap="12.5" prefWrapLength="1000.0" stylesheets="@../../../styles/response-data.css" vgap="12.5" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <BorderPane maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                       <top>
+                                          <Label alignment="TOP_LEFT" styleClass="card-label" text="Overall Experience" BorderPane.alignment="TOP_LEFT">
+                                             <BorderPane.margin>
+                                                <Insets />
+                                             </BorderPane.margin>
+                                             <font>
+                                                <Font name="AdobeFangsongStd-Regular" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </top>
+                                       <padding>
+                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                       </padding>
+                                       <center>
+                                          <BarChart fx:id="overallExperienceChart" legendVisible="false" styleClass="data" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" tickLabelFill="#e5e5e500" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Ambiance Rating" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <AreaChart fx:id="ambianceRatingChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Staff Interaction" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <BarChart fx:id="staffInteractionChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Food Quality" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <BarChart fx:id="foodQualityChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Menu Variety" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <ScatterChart fx:id="menuVarietyChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </ScatterChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Waiting Time" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <BarChart fx:id="waitingTimeChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Cleanliness" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <AreaChart fx:id="cleanlinessRatingChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Value for Money" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <ScatterChart fx:id="valueForMoneyChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </ScatterChart>
+                                       </center></BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                       <top>
+                                          <Label styleClass="card-label" text="Recommendation Likelihood" BorderPane.alignment="TOP_LEFT" />
+                                       </top>
+                                       <center>
+                                          <AreaChart fx:id="recommendationLikelihoodChart" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </center></BorderPane>
+                                 </children>
+                              </FlowPane>
+                           </center>
+                           <bottom>
+                              <Region prefHeight="25.0" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </content>
+                     <BorderPane.margin>
+                        <Insets left="25.0" />
+                     </BorderPane.margin>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </center>
+         <right>
+            <Region prefWidth="25.0" style="-fx-background-color: #323232;" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </center>
    <bottom>

@@ -1,0 +1,7 @@
+.card {
+    -fx-background-color: #4b4b4b;
+}
+
+.card-inner {
+    -fx-min-width: 200;
+}

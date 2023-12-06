@@ -1,0 +1,23 @@
+.card {
+    -fx-background-color: #4b4b4b;
+    -fx-min-width: 300;
+    -fx-max-height: 400;
+    -fx-padding: 10 20 10 20;
+}
+
+.card-label {
+    -fx-text-fill: #38d4cc;
+    -fx-font-family: "Montserrat Semibold";
+}
+
+.data {
+    -fx-background-color: #4b4b4b;
+    -fx-legend-visible: false;
+    -fx-text-fill: #e6e6e6;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-bar { #38d4cc; }
