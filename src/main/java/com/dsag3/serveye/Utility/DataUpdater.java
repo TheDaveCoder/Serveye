@@ -67,7 +67,8 @@ public class DataUpdater {
                 }
                 Platform.runLater(() -> {
                     // Call the updateUI method on your controller with the updated dataList
-                    dbCont.updateUI(genInf);
+                    dbCont.updateUI(genInf); // Dashboard
+                    rpCont.updateUI(genInf.responseList);
                 });
             }
         } catch (Exception e) {

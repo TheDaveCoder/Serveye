@@ -9,17 +9,66 @@
 }
 
 .dateContainer .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #e6e6e6;
 }
 
 .dateContainerData {
-    -fx-font-size: 40;
+    -fx-font-size: 30;
     -fx-spacing: 15;
     -fx-font-family: "Montserrat Semibold";
     -fx-padding: 10;
 }
 
 .dateContainerLabel {
-    -fx-font-size: 25;
+    -fx-font-size: 17.5;
     -fx-font-family: "Montserrat Medium";
+}
+
+.addCommentContainer {
+    -fx-pref-width: 0;
+    -fx-min-width: 0;
+    -fx-border-width: 0 0 0 2;
+    -fx-border-color: #161616;
+}
+
+.addCommentLabel {
+    -fx-text-fill: #e6e6e6;
+    -fx-font-family: "Montserrat Semibold";
+    -fx-padding: 15 0 0 15;
+}
+
+.scrollableCont {
+    -fx-background-color: #4b4b4b;
+}
+
+.addCommentTextContainer {
+    -fx-background-color: #4b4b4b;
+}
+
+.addCommentText {
+    -fx-text-fill: #e6e6e6;
+    -fx-font-size: 15;
+}
+
+.responseInfoCard {
+    -fx-min-width: 150;
+    -fx-pref-height: 150;
+    -fx-background-color: #4b4b4b;
+    -fx-alignment: center;
+}
+
+.responseInfoCard .label {
+    -fx-text-fill: #e6e6e6;
+}
+
+.responseInfoCardData {
+    -fx-font-size: 50;
+    -fx-font-family: "Montserrat Semibold";
+    -fx-padding: 0 0 5 0;
+    -fx-text-alignment: center;
+}
+
+.responseInfoCardLabel {
+    -fx-font-family: "Montserrat";
+    -fx-text-alignment: center;
 }
