@@ -5,6 +5,7 @@ import com.dsag3.serveye.Controllers.SubControllers.SideMenuSubController;
 import com.dsag3.serveye.Controllers.SubControllers.TitlebarSubController;
 import com.dsag3.serveye.Models.GeneralInfo;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
@@ -12,7 +13,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
 
+
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class dbController {
@@ -66,15 +77,27 @@ public class dbController {
     public ScatterChart valueForMoneyChart;
     @FXML
     public AreaChart recommendationLikelihoodChart;
+    public BorderPane button3;
+    public BorderPane button2;
+    public BorderPane button1;
+    public BorderPane button4;
+    public BorderPane button5;
+    public BorderPane button6;
+    public BorderPane button7;
+    public BorderPane button8;
+    public BorderPane button9;
     // Sub Controllers
     private TitlebarSubController titleBarSC;
     private SideMenuSubController sideMenuSC;
     private ResizeSubController resizeSC;
     // Local Fields
+    private Stage popup;
     private Stage app;
     private boolean isElec = true;
     public boolean isDraggable = true;
     private GeneralInfo generalInformation;
+    private final String passCode = "875";
+    private String entry = "";
 
     public void init(Stage app,
                      Scene dashboard,
@@ -83,8 +106,10 @@ public class dbController {
                      rpController rpCont,
                      sgController sgCont,
                      ScheduledExecutorService scheduler,
-                     GeneralInfo generalInfo) {
+                     GeneralInfo generalInfo,
+                     Stage popup) {
         this.app = app;
+        this.popup = popup;
         this.generalInformation = generalInfo;
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, this, rpCont, sgCont, scheduler);
@@ -112,6 +137,8 @@ public class dbController {
         // Main Controller
         // Update the UI
         updateUI(this.generalInformation);
+        // Handle easter egg
+        easterEgg();
     }
 
     public void updateUI(GeneralInfo genInf) {
@@ -272,6 +299,71 @@ public class dbController {
             recommendationLikelihoodChart.getData().add(series);
         } else {
             recommendationLikelihoodChart.getData().clear();
+        }
+    }
+    public void easterEgg() {
+        button1.setOnMouseClicked(event -> {
+            entry += "1";
+            checkCode();
+        });
+        button2.setOnMouseClicked(event -> {
+            entry += "2";
+            checkCode();
+        });
+        button3.setOnMouseClicked(event -> {
+            entry += "3";
+            checkCode();
+        });
+        button4.setOnMouseClicked(event -> {
+            entry += "4";
+            checkCode();
+        });
+        button5.setOnMouseClicked(event -> {
+            entry += "5";
+            checkCode();
+        });
+        button6.setOnMouseClicked(event -> {
+            entry += "6";
+            checkCode();
+        });
+        button7.setOnMouseClicked(event -> {
+            entry += "7";
+            checkCode();
+        });
+        button8.setOnMouseClicked(event -> {
+            entry += "8";
+            checkCode();
+        });
+        button9.setOnMouseClicked(event -> {
+            entry = "";
+        });
+    }
+    
+    public void checkCode() {
+        if(passCode.equals(entry)) {
+            // set popup
+            popup.setFullScreen(true);
+            popup.setFullScreenExitHint("");
+            popup.show();
+            // play wav sound
+            String filePath = "easter.wav";
+            try {
+                File audioFile = new File(filePath);
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                System.out.println("Play Audio");
+                clip.start(); // play audio
+                System.out.println("After Audio");
+                while (!clip.isRunning()) {
+                    Thread.sleep(10);
+                }
+                // Close the resources
+            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            // reset entry code
+            entry = "";
         }
     }
 }

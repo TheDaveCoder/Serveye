@@ -169,7 +169,7 @@
                            <center>
                               <FlowPane alignment="TOP_CENTER" hgap="12.5" prefWrapLength="1000.0" stylesheets="@../../../styles/response-data.css" vgap="12.5" BorderPane.alignment="CENTER">
                                  <children>
-                                    <BorderPane maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button1" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <FlowPane.margin>
                                           <Insets />
                                        </FlowPane.margin>
@@ -197,7 +197,7 @@
                                           </BarChart>
                                        </center>
                                     </BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button2" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Ambiance Rating" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -211,7 +211,7 @@
                                             </yAxis>
                                           </AreaChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button3" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Staff Interaction" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -225,7 +225,7 @@
                                             </yAxis>
                                           </BarChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button4" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Food Quality" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -239,7 +239,7 @@
                                             </yAxis>
                                           </BarChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button5" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Menu Variety" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -253,7 +253,7 @@
                                             </yAxis>
                                           </ScatterChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button6" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Waiting Time" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -267,7 +267,7 @@
                                             </yAxis>
                                           </BarChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button7" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Cleanliness" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -277,11 +277,11 @@
                                               <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis side="LEFT" />
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
                                             </yAxis>
                                           </AreaChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button8" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Value for Money" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -291,11 +291,11 @@
                                               <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis side="LEFT" />
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
                                             </yAxis>
                                           </ScatterChart>
                                        </center></BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="card">
+                                    <BorderPane fx:id="button9" prefHeight="200.0" prefWidth="200.0" styleClass="card">
                                        <top>
                                           <Label styleClass="card-label" text="Recommendation Likelihood" BorderPane.alignment="TOP_LEFT" />
                                        </top>
@@ -305,7 +305,7 @@
                                               <CategoryAxis side="BOTTOM" tickLabelFill="#e6e6e6" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis side="LEFT" />
+                                              <NumberAxis side="LEFT" tickLabelFill="#e6e6e6" />
                                             </yAxis>
                                           </AreaChart>
                                        </center></BorderPane>

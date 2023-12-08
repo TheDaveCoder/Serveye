@@ -12,9 +12,12 @@ import javafx.application.Platform;
 
 import java.util.LinkedList;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class DataUpdater {
     private GeneralInfo genInf;
+    private LinkedList<String> suggestionList;
     private dbController dbCont;
     private rpController rpCont;
     private sgController sgCont;
@@ -23,8 +26,9 @@ public class DataUpdater {
 
     private ScheduledExecutorService scheduler;
 
-    public DataUpdater(GeneralInfo genInf, dbController dbCont, rpController rpCont, sgController sgCont, ScheduledExecutorService scheduler) {
+    public DataUpdater(GeneralInfo genInf, LinkedList<String> suggestionList, dbController dbCont, rpController rpCont, sgController sgCont, ScheduledExecutorService scheduler) {
         this.genInf = genInf;
+        this.suggestionList = suggestionList;
         this.dbCont = dbCont;
         this.rpCont = rpCont;
         this.sgCont = sgCont;
@@ -44,7 +48,6 @@ public class DataUpdater {
             newUpdate = false;
             // Check the database and update the LinkedList
             LinkedList<ResponseModel> newDataList = DataHandler.fetchDataFromDatabase();
-
             // Check for new entries based on the primary key
             for (ResponseModel newEntry : newDataList) {
                 if (genInf.responseList.stream().noneMatch(existingEntry -> existingEntry.responseID == newEntry.responseID)) {
@@ -53,26 +56,43 @@ public class DataUpdater {
                 }
             }
             // Case 2: Database becomes empty
-            if (newDataList.isEmpty() && !genInf.responseList.isEmpty()) {
-                // Database is empty, clear the LinkedList
+            if (newDataList.isEmpty()) {
+                // Database is empty, clear the LinkedLists
                 genInf.responseList.clear();
+                suggestionList.clear();
                 // Flip Update Tracker
                 newUpdate = true;
             }
             // Check if an update occurred
             if(newUpdate) {
-                // If an update occured and its not just the deletion of entries
+                CompletableFuture<LinkedList<String>> resultFuture = asyncRequest(genInf);
+                // If an update occured and it's not just the deletion of entries
                 if(!newDataList.isEmpty()) {
                     genInf = new GeneralInfo(newDataList);
+                    resultFuture.thenAccept(result -> {
+                        Platform.runLater(() -> {
+                            sgCont.updateUI(result);
+                        });
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        sgCont.updateUI(suggestionList);
+                    });
                 }
                 Platform.runLater(() -> {
                     // Call the updateUI method on your controller with the updated dataList
                     dbCont.updateUI(genInf); // Dashboard
-                    rpCont.updateUI(genInf.responseList);
+                    rpCont.updateUI(genInf.responseList); // Response List
                 });
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static CompletableFuture<LinkedList<String>> asyncRequest(GeneralInfo genInf) {
+        return CompletableFuture.supplyAsync(() -> {
+            return FetchSuggestions.getSuggestions(genInf);
+        });
     }
 }

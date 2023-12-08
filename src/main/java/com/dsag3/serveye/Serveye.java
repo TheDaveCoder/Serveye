@@ -7,6 +7,7 @@ import com.dsag3.serveye.Models.ResponseModel;
 import com.dsag3.serveye.Utility.DataHandler;
 import com.dsag3.serveye.Models.GeneralInfo;
 import com.dsag3.serveye.Utility.DataUpdater;
+import com.dsag3.serveye.Utility.FetchSuggestions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,13 +52,22 @@ public class Serveye extends Application {
         LinkedList<ResponseModel> initialData = DataHandler.fetchDataFromDatabase();
         // Setup General Info Object
         GeneralInfo genInf = new GeneralInfo(initialData);
+        // Setup Initial Suggestions
+        LinkedList<String> suggestionList = FetchSuggestions.getSuggestions(genInf);
         // Setup Scheduler
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+        // Easter Egg
+        Stage popup = new Stage();
+        FXMLLoader popupFXML = new FXMLLoader(getClass().getResource("easter-egg.fxml"));
+        Scene primaryScene = new Scene(popupFXML.load());
+        popup.setScene(primaryScene);
+        popup.setTitle("Rawr");
+
         // Initialize controllers and initial data
-        dbCont.init(app, dashboard, responses, suggestions, rpCont, sgCont, scheduler, genInf);
+        dbCont.init(app, dashboard, responses, suggestions, rpCont, sgCont, scheduler, genInf, popup);
         rpCont.init(app, dashboard, responses, suggestions, dbCont, sgCont, scheduler, initialData);
-        sgCont.init(app, dashboard, responses, suggestions, dbCont, rpCont, scheduler);
+        sgCont.init(app, dashboard, responses, suggestions, dbCont, rpCont, scheduler, suggestionList);
 
         // invoke controllers
         dbCont.handleControls();
@@ -74,7 +84,7 @@ public class Serveye extends Application {
         app.show();
 
         // Start updater every X seconds
-        DataUpdater dataUpdater = new DataUpdater(genInf, dbCont, rpCont, sgCont, scheduler);
+        DataUpdater dataUpdater = new DataUpdater(genInf, suggestionList, dbCont, rpCont, sgCont, scheduler);
         dataUpdater.startUpdating();
     }
 }

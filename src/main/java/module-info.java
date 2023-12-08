@@ -2,6 +2,7 @@ module com.dsag3.serveye {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 
 
     opens com.dsag3.serveye to javafx.fxml;

@@ -3,14 +3,20 @@ package com.dsag3.serveye.Controllers;
 import com.dsag3.serveye.Controllers.SubControllers.ResizeSubController;
 import com.dsag3.serveye.Controllers.SubControllers.SideMenuSubController;
 import com.dsag3.serveye.Controllers.SubControllers.TitlebarSubController;
+import com.dsag3.serveye.Models.GeneralInfo;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.util.LinkedList;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class sgController {
@@ -42,12 +48,15 @@ public class sgController {
     public Button maximize;
     @FXML
     public Button exit;
+    @FXML
+    public FlowPane flowPaneContainer;
     // Sub Controllers
     private TitlebarSubController titleBarSC;
     private SideMenuSubController sideMenuSC;
     private ResizeSubController resizeSC;
     // Local Fields
     private Stage app;
+    private LinkedList<String> suggestionList;
     public boolean isDraggable = true;
     public void init(Stage app,
                      Scene dashboard,
@@ -55,8 +64,10 @@ public class sgController {
                      Scene suggestions,
                      dbController dbCont,
                      rpController rpCont,
-                     ScheduledExecutorService scheduler) {
+                     ScheduledExecutorService scheduler,
+                     LinkedList<String> suggestionList) {
         this.app = app;
+        this.suggestionList = suggestionList;
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, rpCont, this, scheduler);
         // Initialize Side Menu
@@ -80,5 +91,50 @@ public class sgController {
         sideMenuSC.init();
         // Sub Controller for custom resize
         resizeSC.init();
+        // Update UI
+        updateUI(this.suggestionList);
+    }
+
+    public void updateUI(LinkedList<String> suggestionList) {
+        flowPaneContainer.getChildren().clear();
+        if(!suggestionList.isEmpty()) {
+            for(int i = 0; i < suggestionList.size(); i++) {
+                // Create Nodes
+                BorderPane suggestionCard = new BorderPane();
+                ScrollPane scrollableCont = new ScrollPane();
+                AnchorPane suggestionCardTextContainer = new AnchorPane();
+                Label suggestionCardLabel = new Label();
+                Label suggestionCardText = new Label();
+                // Apply stylesheets and layout
+                suggestionCard.getStyleClass().add("suggestion-card");
+                scrollableCont.getStyleClass().add("scrollable-cont");
+                suggestionCardTextContainer.getStyleClass().add("suggestion-card-text-container");
+                suggestionCardLabel.getStyleClass().add("suggestion-card-label");
+                suggestionCardText.getStyleClass().add("suggestion-card-text");
+                suggestionCard.setAlignment(suggestionCardLabel, Pos.TOP_LEFT);
+                scrollableCont.setFitToWidth(true);
+                scrollableCont.setFitToHeight(true);
+                suggestionCardText.setWrapText(true);
+                // Set Content
+                switch(i) {
+                    case 0 -> suggestionCardLabel.setText("Overall Experience");
+                    case 1 -> suggestionCardLabel.setText("Ambiance Rating");
+                    case 2 -> suggestionCardLabel.setText("Staff Interaction");
+                    case 3 -> suggestionCardLabel.setText("Food Quality");
+                    case 4 -> suggestionCardLabel.setText("Menu Variety");
+                    case 5 -> suggestionCardLabel.setText("Waiting Time");
+                    case 6 -> suggestionCardLabel.setText("Cleanliness Rating");
+                    case 7 -> suggestionCardLabel.setText("Value For Money");
+                    case 8 -> suggestionCardLabel.setText("Recommendation Likelihood");
+                }
+                suggestionCardText.setText(suggestionList.get(i));
+                // Insert Nodes
+                suggestionCard.setTop(suggestionCardLabel);
+                suggestionCard.setCenter(scrollableCont);
+                scrollableCont.setContent(suggestionCardTextContainer);
+                suggestionCardTextContainer.getChildren().add(suggestionCardText);
+                flowPaneContainer.getChildren().add(suggestionCard);
+            }
+        }
     }
 }

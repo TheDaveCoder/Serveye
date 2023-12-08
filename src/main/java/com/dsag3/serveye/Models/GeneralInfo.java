@@ -20,6 +20,7 @@ public class GeneralInfo {
     public RatingChart valueForMoneyCh = new RatingChart();
     public RatingChart recommendationLikelihoodCh = new RatingChart();
     public LinkedList<ResponseModel> responseList;
+    public LinkedList<Double> categoryAverage = new LinkedList<Double>();
 
     public GeneralInfo(LinkedList<ResponseModel> responseList) {
         this.responseList = responseList;
@@ -211,6 +212,43 @@ public class GeneralInfo {
                     recommendationLikelihoodCh.five++;
                     break;
             }
+        }
+        // get average per category
+        for (int i = 0; i < 9; i ++) {
+            double subTotal = 0;
+            for (int j = 0; j < responseList.size(); j ++) {
+                switch(i) {
+                    case 0:
+                        subTotal += responseList.get(j).overallExperience;
+                        break;
+                    case 1:
+                        subTotal += responseList.get(j).ambianceRating;
+                        break;
+                    case 2:
+                        subTotal += responseList.get(j).staffInteraction;
+                        break;
+                    case 3:
+                        subTotal += responseList.get(j).foodQuality;
+                        break;
+                    case 4:
+                        subTotal += responseList.get(j).menuVariety;
+                        break;
+                    case 5:
+                        subTotal += responseList.get(j).waitingTime;
+                        break;
+                    case 6:
+                        subTotal += responseList.get(j).cleanlinessRating;
+                        break;
+                    case 7:
+                        subTotal += responseList.get(j).valueForMoney;
+                        break;
+                    case 8:
+                        subTotal += responseList.get(j).recommendationLikelihood;
+                        break;
+                }
+            }
+            subTotal /= responseList.size();
+            categoryAverage.add(subTotal);
         }
     }
 }
