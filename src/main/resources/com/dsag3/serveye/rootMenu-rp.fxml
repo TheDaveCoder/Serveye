@@ -64,7 +64,7 @@
                   </VBox>
                </top>
                <bottom>
-                  <Button id="help-btn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="menu-btn" text="Help" BorderPane.alignment="CENTER">
+                  <Button id="help-btn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="menu-btn" text="Clear Data" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="AdobeArabic-Regular" size="10.0" />
                      </font>
