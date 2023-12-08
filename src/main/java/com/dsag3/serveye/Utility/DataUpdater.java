@@ -56,7 +56,7 @@ public class DataUpdater {
                 }
             }
             // Case 2: Database becomes empty
-            if (newDataList.isEmpty()) {
+            if (!(genInf.responseList.isEmpty()) && newDataList.isEmpty()) {
                 // Database is empty, clear the LinkedLists
                 genInf.responseList.clear();
                 suggestionList.clear();

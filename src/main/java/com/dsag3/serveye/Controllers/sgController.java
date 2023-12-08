@@ -50,6 +50,7 @@ public class sgController {
     public Button exit;
     @FXML
     public FlowPane flowPaneContainer;
+    public Button helpButton;
     // Sub Controllers
     private TitlebarSubController titleBarSC;
     private SideMenuSubController sideMenuSC;
@@ -71,7 +72,7 @@ public class sgController {
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, rpCont, this, scheduler);
         // Initialize Side Menu
-        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg);
+        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton);
         // Initialize Custom Resize
         resizeSC = new ResizeSubController(this.app,
                 topResizeHandle,

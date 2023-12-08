@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class DataHandler {
     private static final String DB_URL = "jdbc:mysql://database-1.cl85pye4up69.ap-southeast-1.rds.amazonaws.com:3306/alpha_test";
     private static final String USER = "sf_app_admin";
-    private static final String PASSWORD = "Drakathportal1atrds";
+    private static final String PASSWORD = "arfarfwoofwoofmeow";
     public static LinkedList<ResponseModel> fetchDataFromDatabase() {
         LinkedList<ResponseModel> data = new LinkedList<>();
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD)) {

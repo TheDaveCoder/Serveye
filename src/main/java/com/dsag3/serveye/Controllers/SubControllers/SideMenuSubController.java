@@ -3,6 +3,7 @@ package com.dsag3.serveye.Controllers.SubControllers;
 import com.dsag3.serveye.Controllers.dbController;
 import com.dsag3.serveye.Controllers.rpController;
 import com.dsag3.serveye.Controllers.sgController;
+import com.dsag3.serveye.Utility.ClearDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +25,8 @@ public class SideMenuSubController {
                                  Scene suggestions,
                                  Button btn_db,
                                  Button btn_rp,
-                                 Button btn_sg) {
+                                 Button btn_sg,
+                                 Button helpButton) {
         this.app = app;
         this.dashboard = dashboard;
         this.responses = responses;
@@ -32,6 +34,7 @@ public class SideMenuSubController {
         buttons.add(btn_db);
         buttons.add(btn_rp);
         buttons.add(btn_sg);
+        buttons.add(helpButton);
     }
 
     public void init() {
@@ -54,6 +57,9 @@ public class SideMenuSubController {
                         break;
                     case "Suggestions":
                         app.setScene(suggestions);
+                        break;
+                    case "Clear Data":
+                        ClearDatabase.clear();
                         break;
                 }
                 app.setWidth(newWidth);

@@ -86,6 +86,7 @@ public class dbController {
     public BorderPane button7;
     public BorderPane button8;
     public BorderPane button9;
+    public Button helpButton;
     // Sub Controllers
     private TitlebarSubController titleBarSC;
     private SideMenuSubController sideMenuSC;
@@ -114,7 +115,7 @@ public class dbController {
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, this, rpCont, sgCont, scheduler);
         // Initialize Side Menu
-        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg);
+        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton);
         // Initialize Custom Resize
         resizeSC = new ResizeSubController(this.app,
                 topResizeHandle,

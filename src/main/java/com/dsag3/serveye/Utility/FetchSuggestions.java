@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class FetchSuggestions {
     private static final String url = "https://api.openai.com/v1/chat/completions";
-    private static final String APIKey = "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";
+    private static final String APIKey = "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";
     private static final String model = "gpt-3.5-turbo";
     public static LinkedList<String> getSuggestions(GeneralInfo generalInformation) {
         LinkedList<String> suggestionList = new LinkedList<>();
