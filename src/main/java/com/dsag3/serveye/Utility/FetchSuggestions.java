@@ -2,18 +2,17 @@ package com.dsag3.serveye.Utility;
 
 import com.dsag3.serveye.Models.GeneralInfo;
 import com.dsag3.serveye.Models.ResponseModel;
+import com.dsag3.serveye.Serveye;
 
 import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.Properties;
 
 public class FetchSuggestions {
     private static final String url = "https://api.openai.com/v1/chat/completions";
-    private static final String APIKey = "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";
+    private static final String APIKey = getAPIKey();
     private static final String model = "gpt-3.5-turbo";
     public static LinkedList<String> getSuggestions(GeneralInfo generalInformation) {
         LinkedList<String> suggestionList = new LinkedList<>();
@@ -79,5 +78,15 @@ public class FetchSuggestions {
         rating = rating + generalInformation.categoryAverage.get(currIndex);
         message = message + category + rating;
         return message;
+    }
+
+    public static String getAPIKey() {
+        Properties properties = new Properties();
+        try (InputStream input = FetchSuggestions.class.getClassLoader().getResourceAsStream("cfg.properties")) {
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty("apiKey");
     }
 }

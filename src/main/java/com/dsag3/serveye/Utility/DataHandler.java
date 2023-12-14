@@ -1,14 +1,19 @@
 package com.dsag3.serveye.Utility;
 
 import com.dsag3.serveye.Models.ResponseModel;
+import javafx.scene.chart.XYChart;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.LinkedList;
+import java.util.Properties;
 
 public class DataHandler {
-    private static final String DB_URL = "jdbc:mysql://database-1.cl85pye4up69.ap-southeast-1.rds.amazonaws.com:3306/alpha_test";
-    private static final String USER = "sf_app_admin";
-    private static final String PASSWORD = "arfarfwoofwoofmeow";
+    private static final String DB_URL = getSecretValue("DBUrl");
+    private static final String USER = getSecretValue("DBUsername");
+    private static final String PASSWORD = getSecretValue("DBPass");
     public static LinkedList<ResponseModel> fetchDataFromDatabase() {
         LinkedList<ResponseModel> data = new LinkedList<>();
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD)) {
@@ -37,5 +42,15 @@ public class DataHandler {
                 throw new RuntimeException(e);
         }
         return data;
+    }
+
+    public static String getSecretValue(String field) {
+        Properties properties = new Properties();
+        try (InputStream input = DataHandler.class.getClassLoader().getResourceAsStream("cfg.properties")) {
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty(field);
     }
 }

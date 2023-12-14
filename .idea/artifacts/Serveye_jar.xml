@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Serveye:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Serveye_jar</output-path>
+    <root id="archive" name="Serveye.jar">
+      <element id="module-output" name="Serveye" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21-ea+24/javafx-graphics-21-ea+24.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21-ea+24/javafx-graphics-21-ea+24-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/21-ea+24/javafx-fxml-21-ea+24.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21-ea+24/javafx-controls-21-ea+24.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/21-ea+24/javafx-fxml-21-ea+24-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21-ea+24/javafx-base-21-ea+24-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21-ea+24/javafx-controls-21-ea+24-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21-ea+24/javafx-base-21-ea+24.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../External Libraries/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

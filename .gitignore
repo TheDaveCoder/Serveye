@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Secret Values ###
+src/main/resources/cfg.properties
