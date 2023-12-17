@@ -27,14 +27,14 @@
 
 #help-btn {
     -fx-font-size: 10;
-    -fx-background-image: url('../icons/xmark.png');
+    -fx-background-image: url('../icons/help.png');
     -fx-pref-height: 55;
     -fx-background-size: 30%;
     -fx-label-padding: 0 0 5 0;
     -fx-padding: 0;
 }
 #help-btn:hover {
-    -fx-background-image: url('../icons/xmark-solid.png');
+    -fx-background-image: url('../icons/help-selected.png');
 }
 
 #dashboard {

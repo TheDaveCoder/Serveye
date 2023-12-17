@@ -9,121 +9,128 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #161616;" stylesheets="@../../../styles/wrapper.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsag3.serveye.Controllers.sgController">
-   <right>
-      <Region fx:id="rightResizeHandle" minWidth="4.0" styleClass="h_region" />
-   </right>
-   <left>
-      <Region fx:id="leftResizeHandle" minWidth="4.0" styleClass="h_region" />
-   </left>
-   <center>
-      <BorderPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #181818;" stylesheets="@../../../styles/content.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-         <top>
-            <BorderPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="22.5" style="-fx-background-color: #181818;" BorderPane.alignment="CENTER">
-               <left>
-                  <Label text="SERVEYE" textFill="#e6e6e6" BorderPane.alignment="CENTER">
+<StackPane fx:id="stackPane" stylesheets="@../../../styles/wrapper.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsag3.serveye.Controllers.sgController">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #161616;">
+         <right>
+            <Region fx:id="rightResizeHandle" minWidth="4.0" styleClass="h_region" />
+         </right>
+         <left>
+            <Region fx:id="leftResizeHandle" minWidth="4.0" styleClass="h_region" />
+         </left>
+         <center>
+            <BorderPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #181818;" stylesheets="@../../../styles/content.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+               <top>
+                  <BorderPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="22.5" style="-fx-background-color: #181818;" BorderPane.alignment="CENTER">
+                     <left>
+                        <Label text="SERVEYE" textFill="#e6e6e6" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="9.0" top="3.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font name="Montserrat Black Italic" size="10.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <right>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.5" prefWidth="82.5" stylesheets="@../../../styles/icon-images.css" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="minimize" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
+                              <Button fx:id="maximize" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
+                              <Button fx:id="exit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
+                           </children>
+                        </HBox>
+                     </right>
+                  </BorderPane>
+               </top>
+               <center>
+                  <BorderPane styleClass="content-pane" stylesheets="@../../../styles/suggestion-tab.css" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets left="9.0" top="3.0" />
+                        <Insets />
                      </BorderPane.margin>
-                     <font>
-                        <Font name="Montserrat Black Italic" size="10.0" />
-                     </font>
-                  </Label>
+                     <center>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #323232;">
+                           <content>
+                              <FlowPane fx:id="flowPaneContainer" hgap="15.0" prefHeight="200.0" prefWidth="200.0" styleClass="content-pane" vgap="15.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </FlowPane>
+                           </content>
+                        </ScrollPane>
+                     </center>
+                     <top>
+                        <Label text="Suggestions" textFill="#e6e6e6" BorderPane.alignment="TOP_LEFT">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="20.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </center>
+               <left>
+                  <BorderPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="75.0" stylesheets="@../../../styles/buttons.css" BorderPane.alignment="CENTER">
+                     <top>
+                        <VBox minHeight="0.0" prefHeight="300.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button id="dashboard" fx:id="btn_db" mnemonicParsing="false" styleClass="menu-btn" text="Dashboard" />
+                              <Button id="responses" fx:id="btn_rp" mnemonicParsing="false" styleClass="menu-btn" text="Responses" />
+                              <Button id="suggestions" fx:id="btn_sg" mnemonicParsing="false" text="Suggestions">
+                                 <styleClass>
+                                    <String fx:value="menu-btn" />
+                                    <String fx:value="selected" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets top="10.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </top>
+                     <bottom>
+                        <Button id="help-btn" fx:id="helpButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="menu-btn" text="More Info" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="AdobeArabic-Regular" size="10.0" />
+                           </font>
+                        </Button>
+                     </bottom>
+                  </BorderPane>
                </left>
+            </BorderPane>
+         </center>
+         <bottom>
+            <BorderPane minHeight="4.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Region id="bottom-left" fx:id="bottomLeftResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <Region fx:id="bottomResizeHandle" minHeight="4.0" styleClass="v_region" BorderPane.alignment="CENTER" />
+               </center>
                <right>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.5" prefWidth="82.5" stylesheets="@../../../styles/icon-images.css" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="minimize" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
-                        <Button fx:id="maximize" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
-                        <Button fx:id="exit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.5" prefWidth="27.5" styleClass="btn-img" />
-                     </children>
-                  </HBox>
+                  <Region id="bottom-right" fx:id="bottomRightResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </bottom>
+         <top>
+            <BorderPane minHeight="4.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Region id="top-left" fx:id="topLeftResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <Region fx:id="topResizeHandle" minHeight="4.0" styleClass="v_region" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <Region id="top-right" fx:id="topRightResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
          </top>
-         <center>
-            <BorderPane styleClass="content-pane" stylesheets="@../../../styles/suggestion-tab.css" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <center>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #323232;">
-                     <content>
-                        <FlowPane fx:id="flowPaneContainer" hgap="15.0" prefHeight="200.0" prefWidth="200.0" styleClass="content-pane" vgap="15.0">
-                           <padding>
-                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                           </padding>
-                        </FlowPane>
-                     </content>
-                  </ScrollPane>
-               </center>
-               <top>
-                  <Label text="Suggestions" textFill="#e6e6e6" BorderPane.alignment="TOP_LEFT">
-                     <font>
-                        <Font name="Montserrat SemiBold" size="20.0" />
-                     </font>
-                     <BorderPane.margin>
-                        <Insets left="15.0" top="15.0" />
-                     </BorderPane.margin>
-                  </Label>
-               </top>
-            </BorderPane>
-         </center>
-         <left>
-            <BorderPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="75.0" stylesheets="@../../../styles/buttons.css" BorderPane.alignment="CENTER">
-               <top>
-                  <VBox minHeight="0.0" prefHeight="300.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button id="dashboard" fx:id="btn_db" mnemonicParsing="false" styleClass="menu-btn" text="Dashboard" />
-                        <Button id="responses" fx:id="btn_rp" mnemonicParsing="false" styleClass="menu-btn" text="Responses" />
-                        <Button id="suggestions" fx:id="btn_sg" mnemonicParsing="false" text="Suggestions">
-                           <styleClass>
-                              <String fx:value="menu-btn" />
-                              <String fx:value="selected" />
-                           </styleClass></Button>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets top="10.0" />
-                     </BorderPane.margin>
-                  </VBox>
-               </top>
-               <bottom>
-                  <Button fx:id="helpButton" id="help-btn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="menu-btn" text="Clear Data" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font name="AdobeArabic-Regular" size="10.0" />
-                     </font>
-                  </Button>
-               </bottom>
-            </BorderPane>
-         </left>
       </BorderPane>
-   </center>
-   <bottom>
-      <BorderPane minHeight="4.0" BorderPane.alignment="CENTER">
-         <left>
-            <Region id="bottom-left" fx:id="bottomLeftResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
-         </left>
-         <center>
-            <Region fx:id="bottomResizeHandle" minHeight="4.0" styleClass="v_region" BorderPane.alignment="CENTER" />
-         </center>
-         <right>
-            <Region id="bottom-right" fx:id="bottomRightResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
-         </right>
-      </BorderPane>
-   </bottom>
-   <top>
-      <BorderPane minHeight="4.0" BorderPane.alignment="CENTER">
-         <left>
-            <Region id="top-left" fx:id="topLeftResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
-         </left>
-         <center>
-            <Region fx:id="topResizeHandle" minHeight="4.0" styleClass="v_region" BorderPane.alignment="CENTER" />
-         </center>
-         <right>
-            <Region id="top-right" fx:id="topRightResizeHandle" minHeight="4.0" minWidth="4.0" BorderPane.alignment="CENTER" />
-         </right></BorderPane>
-   </top>
-</BorderPane>
+   </children>
+</StackPane>

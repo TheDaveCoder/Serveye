@@ -41,6 +41,8 @@ public class rpController {
     @FXML
     public Region leftResizeHandle;
     @FXML
+    public StackPane stackPane;
+    @FXML
     public Button minimize;
     @FXML
     public Button maximize;
@@ -82,7 +84,7 @@ public class rpController {
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, this, sgCont, scheduler);
         // Initialize Side Menu
-        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton);
+        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton, stackPane);
         // Initialize Custom Resize
         resizeSC = new ResizeSubController(this.app,
                 topResizeHandle,

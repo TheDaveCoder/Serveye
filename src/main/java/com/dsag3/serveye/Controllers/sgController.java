@@ -10,10 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
@@ -42,6 +39,8 @@ public class sgController {
     public Region bottomRightResizeHandle;
     @FXML
     public Region leftResizeHandle;
+    @FXML
+    public StackPane stackPane;
     @FXML
     public Button minimize;
     @FXML
@@ -72,7 +71,7 @@ public class sgController {
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, dbCont, rpCont, this, scheduler);
         // Initialize Side Menu
-        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton);
+        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton, stackPane);
         // Initialize Custom Resize
         resizeSC = new ResizeSubController(this.app,
                 topResizeHandle,

@@ -4,9 +4,11 @@ import com.dsag3.serveye.Controllers.dbController;
 import com.dsag3.serveye.Controllers.rpController;
 import com.dsag3.serveye.Controllers.sgController;
 import com.dsag3.serveye.Utility.ClearDatabase;
+import com.dsag3.serveye.Utility.MoreInfoPopup;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
@@ -18,6 +20,7 @@ public class SideMenuSubController {
     private final Scene responses;
     private final Scene suggestions;
     private final LinkedList<Button> buttons = new LinkedList<>();
+    private final StackPane stackPane;
     private double newHeight, newWidth, newX, newY;
     public SideMenuSubController(Stage app,
                                  Scene dashboard,
@@ -26,11 +29,13 @@ public class SideMenuSubController {
                                  Button btn_db,
                                  Button btn_rp,
                                  Button btn_sg,
-                                 Button helpButton) {
+                                 Button helpButton,
+                                 StackPane stackPane) {
         this.app = app;
         this.dashboard = dashboard;
         this.responses = responses;
         this.suggestions = suggestions;
+        this.stackPane = stackPane;
         buttons.add(btn_db);
         buttons.add(btn_rp);
         buttons.add(btn_sg);
@@ -58,8 +63,8 @@ public class SideMenuSubController {
                     case "Suggestions":
                         app.setScene(suggestions);
                         break;
-                    case "Clear Data":
-                        ClearDatabase.clear();
+                    case "More Info":
+                        MoreInfoPopup.open(stackPane);
                         break;
                 }
                 app.setWidth(newWidth);

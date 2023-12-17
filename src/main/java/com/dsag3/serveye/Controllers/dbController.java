@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -86,6 +87,7 @@ public class dbController {
     public BorderPane button7;
     public BorderPane button8;
     public BorderPane button9;
+    public StackPane stackPane;
     public Button helpButton;
     // Sub Controllers
     private TitlebarSubController titleBarSC;
@@ -115,7 +117,7 @@ public class dbController {
         // Initialize Title Bar
         titleBarSC = new TitlebarSubController(this.app, titleBar, minimize, maximize, exit, this, rpCont, sgCont, scheduler);
         // Initialize Side Menu
-        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton);
+        sideMenuSC = new SideMenuSubController(this.app, dashboard, responses, suggestions, btn_db, btn_rp, btn_sg, helpButton, stackPane);
         // Initialize Custom Resize
         resizeSC = new ResizeSubController(this.app,
                 topResizeHandle,
