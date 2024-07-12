@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ClearDatabase {
-    private static final String DB_URL = "jdbc:mysql://database-1.cl85pye4up69.ap-southeast-1.rds.amazonaws.com:3306/alpha_test";
-    private static final String USER = "sf_app_admin";
-    private static final String PASSWORD = "arfarfwoofwoofmeow";
+    private static final String DB_URL = "jdbc:mysql://serveye.cl85pye4up69.ap-southeast-1.rds.amazonaws.com:3306/Serveye";
+    private static final String USER = "admin";
+    private static final String PASSWORD = "doobiedoobiedooba";
     public static void clear() {
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement statement = connection.createStatement()) {

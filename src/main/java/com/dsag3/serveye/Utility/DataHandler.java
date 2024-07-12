@@ -16,7 +16,8 @@ public class DataHandler {
     private static final String PASSWORD = getSecretValue("DBPass");
     public static LinkedList<ResponseModel> fetchDataFromDatabase() {
         LinkedList<ResponseModel> data = new LinkedList<>();
-        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD)) {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             String sql = "SELECT * FROM alpha_table";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -24,7 +25,7 @@ public class DataHandler {
                     // Create ResponseModel objects and add them to the LinkedList
                     ResponseModel model = new ResponseModel(
                             resultSet.getInt("responseID"),
-                            resultSet.getString("timeStamp"),
+                            resultSet.getString("currTimeStamp"),
                             resultSet.getInt("overallExperience"),
                             resultSet.getInt("ambianceRating"),
                             resultSet.getInt("staffInteraction"),
